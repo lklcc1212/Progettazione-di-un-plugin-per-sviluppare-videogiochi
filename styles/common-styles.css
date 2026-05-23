@@ -55,12 +55,12 @@ html {
 }
 
 /* ---------- 阻止用户选择或拖拽 ---------- */
-/* .prevent-select {
+.prevent-select {
   -webkit-user-select: none;
   -ms-user-select: none;
   -moz-user-select: none;
   user-select: none;
-} */
+}
 
 img,
 a {

@@ -109,8 +109,8 @@
               creare e modificare sequenze di animazione in modo intuitivo.
               <br />
               <strong
-                >Caratteristiche di questo plugin: basato su coroutine, semplice
-                e facile da usare, altamente personalizzabile e leggero.</strong
+                >Caratteristiche di questo plugin: semplice e facile da usare,
+                altamente personalizzabile e leggero.</strong
               >
             </p>
             <hr />
@@ -120,13 +120,10 @@
             <ol style="margin-left: 1rem">
               <li>
                 Scarica il plugin:
-                <a href="AnimLink V.0.8.1-beta.unitypackage" download
-                  >AnimLink V.0.8.1-beta</a
+                <a href="AnimLink V.0.9.1-beta.unitypackage" download
+                  >AnimLink V.0.9.1-beta</a
                 >
                 <br />
-                Nota: per poter utilizzare la modalità anteprima, cerca e
-                installa <code>EditorCoroutine</code> nel
-                <strong>Unity Package Manager</strong>
               </li>
               <li>
                 Importa il plugin <code>AnimLink</code> nel tuo progetto Unity.
@@ -139,17 +136,18 @@
                   <pre>
 <code >using UnityEngine;
 using AnimLink; // Prima di usare AnimLink nello script, è necessario importare il namespace AnimLink.
-public class HelloWorld : MonoBehaviour {
-  public CanvasGroup canvasGroup;
-  void Start() {
-    // Movimento: sposta l'oggetto lungo l'asse X fino alla posizione 3f, in 2 secondi
-    transform.DoPosition(Axis.X, 3f, 2f, 1, Base_AnimType.None, Ease.Linear).Play();
-    // Scala: scala l'oggetto localmente a (2,2,2), in 2 secondi
-    transform.DoScale(new Vector3(2f, 2f, 2f), 2f, 1, Base_AnimType.None, Ease.Linear)
-                      .Play();
-    // Trasparenza: cambia l'opacità del CanvasGroup UI a 0 (completamente trasparente), in 1 secondo
-    canvasGroup.DoAlpha(0f, 1f, 1, ValueAnimType.None, Ease.Linear).Play();
-  }
+public class Test : MonoBehaviour
+{
+    public CanvasGroup canvasGroup;
+    void Start()
+    {
+        // Movimento: sposta l'oggetto lungo l'asse X fino alla posizione 3f, in 2 secondi
+        transform.DoPosition(3f, 2f, Axis.X).Play();
+        // Scala: scala l'oggetto localmente a (2,2,2), in 2 secondi
+        transform.DoScale(new Vector3(2f, 2f, 2f), 2f).Play();
+        // Trasparenza: cambia l'opacità del CanvasGroup UI a 0 (completamente trasparente), in 1 secondo
+        canvasGroup.DoAlpha(0f, 1f).Play();
+    }
 }</code></pre>
                 </div>
               </li>

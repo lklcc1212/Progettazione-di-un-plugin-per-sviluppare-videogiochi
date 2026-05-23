@@ -1,0 +1,19 @@
+{
+    "name": "AnimLink.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2a94099310f48494f8b030c319d48ab8",
+        "GUID:54cb1906aeb4e4264bc1d2aa3818a43f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

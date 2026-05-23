@@ -1,0 +1,252 @@
+/* --------------------------------------------- 风格1 --------------------------------------------- */
+/* ---------- 布局 ---------- */
+#layout {
+  display: flex; /* 它将容器变成灵活的容器。默认：横向 */
+  height: 100lvh;
+}
+
+#main {
+  margin-left: 240px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+}
+
+/* ---------- 侧边栏 ---------- */
+#sidebar {
+  width: 240px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  padding: 1rem;
+  background: var(--base-bg-color1);
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  transition:
+    width 0.25s ease-out,
+    transform 0.25s ease-out;
+  z-index: 15;
+}
+
+#sidebar * {
+  transition: all 0.25s ease;
+}
+
+#sidebar h2 {
+  margin-bottom: 1rem;
+  color: var(--sidebar-element-hover-color);
+}
+
+#sidebar li {
+  list-style: none;
+  margin: 0.5rem 0;
+}
+
+#sidebar li a {
+  display: block; /* 该元素占据其容器的全部可用宽度（默认情况下）。 */
+  text-decoration: none; /* 不显示下横线 */
+  color: var(--base-color);
+  white-space: nowrap; /* 不换行 */
+  text-overflow: ellipsis; /* 溢出的话显示"..." */
+  overflow: hidden; /* 不显示溢出 */
+}
+
+#sidebar a:hover {
+  color: var(--sidebar-element-hover-color);
+  transform: scale(1.05);
+}
+
+#sidebar a.active {
+  font-weight: bold;
+  color: var(--sidebar-element-active-color);
+  padding: 0.5rem;
+}
+
+#sidebar hr {
+  border-color: var(--border-color);
+}
+
+/* ---------- 内容区(main的一部分) ---------- */
+#contents {
+  padding-right: 24px;
+  background-color: var(--base-bg-color1);
+  height: 100%;
+  line-height: 2rem;
+  overflow: auto;
+}
+
+#contents h1 {
+  margin-bottom: 27px;
+  font-size: 2rem;
+  line-height: 2.25rem;
+  padding-left: 1.5rem; /* 流出左边的空间给#(伪元素) */
+  padding-right: 1.5rem;
+  margin-left: -1.25rem;
+  position: relative;
+  width: fit-content;
+}
+
+/* 伪元素的样式 */
+#contents h1::before {
+  cursor: pointer;
+  content: "#";
+  position: absolute;
+  transform: scale(0);
+  font-size: 1rem;
+  left: 0.5rem;
+  transition: all 0.2s ease;
+}
+#contents h1::after {
+  cursor: pointer;
+  content: "#";
+  position: absolute;
+  transform: scale(0);
+  font-size: 1rem;
+  right: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+/* Hover 时，让它从 0 -> 1.5 放大，并带动画 */
+#contents h1:hover::before {
+  transform: scale(1.5);
+  color: var(--sidebar-element-hover-color);
+}
+#contents h1:hover::after {
+  transform: scale(1.5);
+  color: var(--sidebar-element-hover-color);
+}
+
+/* 点击时，让它从 1.5 -> 1 缩小，并带动画 */
+#contents h1:active::before {
+  transform: scale(1);
+  color: var(--sidebar-element-active-color);
+}
+#contents h1:active::after {
+  transform: scale(1);
+  color: var(--sidebar-element-active-color);
+}
+
+#contents h2 {
+  margin-top: 0.5rem;
+}
+
+#contents section:target {
+  position: relative;
+  min-height: 100%;
+  max-width: 100%;
+  visibility: visible;
+  padding: 2vw;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* section的背景 */
+#contents section {
+  position: fixed;
+  background: var(--base-bg-color2);
+  transform: scale(0);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 5px 5px 5px 0 var(--box-shadow-color);
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition:
+    transform 1s ease,
+    opacity 1s ease;
+}
+
+/* ---------- 未知页面 ---------- */
+#page-not-found:target {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+#page-not-found p {
+  font-size: 4rem;
+  font-family: "Merienda", cursive;
+}
+
+/* ---------- 侧边栏显示按钮风格(初始状态：不显示) ---------- */
+#showSidebarDiv {
+  display: none;
+  top: var(--header-height);
+  height: 2rem;
+  background: var(--base-bg-color1);
+  padding: 0.5rem;
+  align-items: center;
+  border-bottom: 0.5px solid var(--border-color);
+}
+
+#translucentScreen {
+  background: #00000080;
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 14;
+  transition: all 0.25s ease-out;
+}
+
+/* ---------- 响应式设计 ---------- */
+@media (max-width: 800px) {
+  #sidebar {
+    width: 300px;
+    transform: translateX(-300px);
+  }
+
+  #sidebar.show {
+    transform: translateX(0);
+  }
+
+  #main {
+    margin-left: 0;
+  }
+
+  #translucentScreen.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  #showSidebarDiv {
+    display: flex;
+  }
+
+  #showSidebarDiv span:hover {
+    cursor: pointer;
+  }
+
+  /* ---------- 风格灵感info ---------- */
+  .styleInfo {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+  }
+
+  #sidebar.show ~ pre .styleInfo {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+/* ----------- 风格灵感info ----------*/
+.styleInfo {
+  position: absolute;
+  bottom: 0;
+  z-index: 15;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.styleInfo a {
+  text-decoration: none;
+  color: var(--sidebar-element-active-color);
+}
+
+/* 风格灵感来自： https://schema-render.js.org/core-react/001-intro */

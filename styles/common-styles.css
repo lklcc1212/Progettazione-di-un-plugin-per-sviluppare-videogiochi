@@ -1,0 +1,367 @@
+/* --------------------------------------------- 通用风格 --------------------------------------------- */
+/* ---------- 全局重置与字体 ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  /*
+  margin: 边距是元素边缘与其他附近元素之间的外部空间。
+  padding: 填充是元素内容与其边框之间的内部空间。
+  */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--base-color);
+  background: var(--base-bg-color2);
+  min-width: 350px;
+}
+
+/* ---------- 全局变量 ---------- */
+html {
+  /* 或 :root { variables } 优先级更高 */
+  /* ---------- 浅色主题 ---------- */
+  --base-color: #333;
+  --base-bg-color1: #f7f9fb;
+  --base-bg-color2: #ffffff;
+  --sidebar-element-hover-color: #000000;
+  --sidebar-element-active-color: #1677ff;
+  --scrollbar-color: #727272;
+  --scrollbar-hover-color: #676767;
+  --box-shadow-color: #b9b9b9;
+  --code-element-bg-color: #f0f4f8;
+  --code-element-color: #d56161;
+  --header-height: 60px;
+  --border-color: #e4e9ec;
+}
+
+/* ---------- 深色主题 ---------- */
+.dark {
+  --base-color: #ddd;
+  --base-bg-color1: #050709;
+  --base-bg-color2: #0a0e13;
+  --sidebar-element-hover-color: #fff;
+  --sidebar-element-active-color: #0053c8;
+  --scrollbar-color: #fff;
+  --scrollbar-hover-color: #dedede;
+  --box-shadow-color: #131313;
+  --code-element-bg-color: #0d141a;
+  --border-color: #2a353c;
+}
+
+/* ---------- main translation ---------- */
+#main {
+  transition: margin 0.25s ease-out;
+}
+
+/* ---------- 阻止用户选择或拖拽 ---------- */
+/* .prevent-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+} */
+
+img,
+a {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+}
+
+/* ---------- 通用：视频风格 ---------- */
+.video h3 {
+  margin-top: 0.5rem;
+}
+
+.video {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.video video {
+  border-radius: 5px;
+  border: 1px solid var(--border-color);
+  width: 80%; /* 相对于父元素宽度 */
+  max-width: 600px; /* 最大宽度限制 */
+  min-width: 300px; /* 最小宽度限制 */
+}
+
+/* ---------- 通用：自定义滚动条 ---------- */
+/* 整个scrollbar */
+::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+/* scrollbar的跳 */
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border-radius: 10px;
+}
+
+/* scrollbar被鼠标悬停 */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover-color);
+}
+
+/* scrollbar的背景 */
+::-webkit-scrollbar-track {
+  background-color: var(--base-bg-color1);
+}
+
+/* ---------- 通用: 顶部 Header(main的一部分) ---------- */
+#header {
+  height: var(--header-height);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  /* space-between: 首尾不留空白;中间的每个元素之间平均分配间距 
+     space-around: 每个元素左右都留有相等的间距;首尾两侧的间距是中间间距的一半
+     space-evenly: 每个元素之间和两侧的空白都完全相等
+  */
+  background: var(--base-bg-color1);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+#header .logo {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  gap: 0.5rem; /* logo和标题之间的间距 */
+  font-weight: bold;
+  font-family: "Merienda";
+  font-size: 2rem;
+}
+
+#header .logo img {
+  width: 2rem;
+  border-radius: 5px;
+}
+
+#right-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#lang-toggle {
+  height: 1rem;
+  transition: all 0.2s ease;
+}
+
+#lang-toggle:hover {
+  cursor: pointer;
+  transform: scale(2);
+}
+
+#lang-toggle:active {
+  transform: scale(1);
+}
+
+#theme-toggle {
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(2) rotateZ(1turn);
+}
+
+#theme-toggle:active {
+  transform: scale(1);
+}
+
+@keyframes forward-rotate-scale {
+  from {
+    transform: rotateZ(0) scale(1);
+  }
+  to {
+    transform: rotateZ(180deg) scale(1.5);
+  }
+}
+
+@keyframes backward-rotate-scale {
+  from {
+    transform: rotateZ(0) scale(1.5);
+  }
+  to {
+    transform: rotateZ(-180deg) scale(1);
+  }
+}
+
+/* 悬停且未按下 */
+#change-style-img:hover {
+  animation: forward-rotate-scale 0.25s ease-out 1 normal forwards;
+}
+
+/* 按下时或闲置时 */
+#change-style-img:active,
+#change-style-img {
+  animation: backward-rotate-scale 0.25s ease-out 1 normal forwards;
+}
+
+#change-style-img {
+  cursor: pointer;
+}
+
+/* ----------- 工具提示 ---------- */
+.tooltip-wrapper {
+  position: relative;
+}
+
+.tooltip {
+  width: max-content;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background-color: #333;
+  color: #fff;
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  left: auto;
+  top: 50%;
+  pointer-events: none; /* 使其hover时，不会触发任何event */
+  opacity: 0;
+  /*      所有类型|时间|延迟|缓动类型 */
+  transition: all 0.25s 0s ease-out;
+}
+
+.tooltip-wrapper:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(70%);
+}
+
+/* ---------- 通用：分割线，列表，连接和图片风格 ---------- */
+section a {
+  color: var(--sidebar-element-active-color);
+}
+
+section hr {
+  margin: 1rem 0;
+  border: 1px solid var(--border-color);
+}
+
+section ol,
+section ul {
+  padding-left: 1rem;
+}
+
+section img {
+  border-radius: 5px;
+  width: 80%; /* 相对于父元素宽度 */
+  max-width: 600px; /* 最大宽度限制 */
+  min-width: 250px; /* 最小宽度限制 */
+}
+
+/* ---------- 通用：突出显示文本的风格 ---------- */
+/* parent 不是 pre */
+:not(pre) > code {
+  padding: 2px 5px;
+  background: var(--code-element-bg-color);
+  border-radius: 5px;
+}
+
+code {
+  color: var(--code-element-color);
+  font-weight: normal;
+  font-size: 14px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
+/* ---------- 通用：表格的风格 ----------*/
+
+.table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-weight: bold;
+  background-color: var(--base-bg-color2);
+}
+
+table th {
+  background-color: var(--base-bg-color1);
+  color: var(--base-color, #333);
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+}
+
+table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+}
+
+/* 代码样式：不自动换行 */
+table code {
+  display: block;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  background-color: #1e1e1e;
+  color: #f8f8f2;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+/* ---------- 通用：代码面板 ---------- */
+.code-panel {
+  max-width: 95%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #1e1e1e;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 0 0 1.5rem 0;
+  overflow: auto;
+}
+
+.code-panel pre {
+  line-height: 1.5rem;
+}
+
+.code-panel code {
+  color: #f8f8f2;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 1rem;
+  line-height: 10px;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* ---------- 通用：自动换行 ---------- */
+
+h1,
+h2,
+h3,
+code:not(:is(pre code, table code)),
+p {
+  word-break: break-word;
+}

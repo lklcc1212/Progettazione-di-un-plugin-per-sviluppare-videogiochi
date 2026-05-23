@@ -1,0 +1,43 @@
+/* ---------- 布局 ---------- */
+
+#main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* 这里写100vh，因为这样scrollbar就在content里了*/
+}
+
+/* ---------- 内容(main的一部分) ---------- */
+#contents {
+  padding: 24px;
+  line-height: 2rem;
+  overflow: auto;
+}
+
+#contents h1 {
+  margin-bottom: 27px;
+  font-size: 2rem;
+  line-height: 2.25rem;
+  width: fit-content;
+}
+
+/* ---------- 未知页面(不显示) ---------- */
+#page-not-found {
+  display: none;
+}
+
+/* ---------- 风格灵感info(不显示) ----------*/
+pre:has(.styleInfo) {
+  display: none;
+}
+
+/* ---------- 侧边栏(不显示) ---------- */
+#sidebar {
+  transform: translateX(-300px);
+  position: absolute;
+  visibility: hidden;
+}
+
+/* ---------- 侧边栏显示按钮风格(不显示) ---------- */
+#showSidebarDiv {
+  display: none;
+}

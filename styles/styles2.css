@@ -1,0 +1,85 @@
+/* --------------------------------------------- 风格2(简单) --------------------------------------------- */
+/* ---------- 布局 ---------- */
+
+#main {
+  --main-padding: 20px;
+  margin: 10px 60px;
+  box-shadow: 5px 5px 5px var(--box-shadow-color);
+  border-radius: 8px;
+  background-color: var(--base-bg-color2);
+  padding: var(--main-padding);
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* ---------- 修改通用：顶部 Header(main的一部分) ---------- */
+#header {
+  margin: calc(-1 * var(--main-padding));
+  border-radius: 8px 8px 0 0;
+  left: 0;
+  top: 0;
+  width: 100% + var(--main-padding);
+  position: sticky;
+}
+
+/* ---------- 内容区(main的一部分) ---------- */
+#contents {
+  margin-top: 70px;
+  height: 100%;
+  line-height: 2rem;
+}
+
+#contents h1 {
+  margin: 30px 0 5px 0;
+  line-height: 3.25rem;
+  font-size: 3rem;
+  padding-left: 1.5rem; /* 流出左边的空间给#(伪元素) */
+  padding-right: 1.5rem;
+  margin-left: -1.25rem;
+}
+
+#contents h2 {
+  margin-top: 0.5rem;
+}
+
+#contents section {
+  z-index: -1;
+}
+
+/* ---------- 修改通用：表格的风格 ----------*/
+.table-wrapper {
+  width: 100%;
+}
+
+/* ---------- 自定义滚动条(修改) ---------- */
+/* body的scrollbar的背景 */
+body::-webkit-scrollbar-track {
+  background-color: var(--base-bg-color2);
+}
+
+/* ---------- 响应式设计 ---------- */
+@media (max-width: 800px) {
+  #main {
+    margin: 10px;
+  }
+}
+
+/* ---------- 未知页面(不显示) ---------- */
+#page-not-found {
+  display: none;
+}
+
+/* ---------- 风格灵感info(不显示) ----------*/
+pre:has(.styleInfo) {
+  display: none;
+}
+
+/* ---------- 侧边栏(不显示) ---------- */
+#sidebar {
+  display: none;
+}
+
+/* ---------- 侧边栏显示按钮风格(不显示) ---------- */
+#showSidebarDiv {
+  display: none;
+}

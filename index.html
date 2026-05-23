@@ -169,6 +169,15 @@ public class Test : MonoBehaviour
               ✅ <strong>Suggerimento:</strong> Vuoi saperne di più? Dai
               un'occhiata agli esempi nella cartella
               <code>AnimLink/RunTime/Examples</code>!
+              <a
+                href="https://github.com/lklcc1212/Progettazione-di-un-plugin-per-sviluppare-videogiochi/tree/main/src/AnimLink%200.9.1-beta"
+                ><img
+                  src="/images/GitHub_Invertocat_White_Clearspace.svg"
+                  id="white_github" />
+                <img
+                  src="/images/GitHub_Invertocat_Black_Clearspace.svg"
+                  id="black_github"
+              /></a>
             </p>
             <hr />
           </section>
@@ -184,25 +193,27 @@ public class Test : MonoBehaviour
               e altre funzionalità.
             </p>
 
-            <h2>🔹 Componente <code>AnimationCommandGroup</code></h2>
+            <h2>🔹 Componente <code>AnimSequenceConfig</code></h2>
             <p>
-              <code>AnimationCommandGroup</code> è uno dei componenti chiave di
+              <code>AnimSequenceConfig</code> è uno dei componenti chiave di
               <code>AnimLink</code>, utilizzato per gestire in modo
               centralizzato più comandi di animazione. Ogni comando controlla un
               comportamento animato (ad esempio spostamento, transizione di
               opacità, cambio colore, ecc.). Il relativo
-              <code>AnimationCommandGroupPropertyDrawer</code> disegna
-              nell'<strong>Inspector</strong> una lista sequenziale di comandi.
-              <br /><br />
+              <code>AnimSequenceConfigPropertyDrawer</code> disegna nell'<strong
+                >Inspector</strong
+              >
+              una lista sequenziale di comandi. <br /><br />
               Per usarlo, basta aggiungere il componente
-              <code>AnimationCommandGroup</code> all'oggetto di scena:
-              nell'<strong>Inspector</strong> potrai aggiungere, modificare e
-              rimuovere visivamente ogni comando animazione. Ogni commando
-              consente di impostare il tipo di animazione (es.
-              <code>DoPosition</code>, <code>DoAlpha</code>), il valore
-              obiettivo, la durata, il tipo di easing, la modalità di loop e
-              altro, e di cliccare un pulsante di anteprima per vedere in tempo
-              reale l'effetto. <br /><br />
+              <code>AnimSequenceConfig</code> all'oggetto di scena: nell'<strong
+                >Inspector</strong
+              >
+              potrai aggiungere, modificare e rimuovere visivamente ogni comando
+              animazione. Ogni commando consente di impostare il tipo di
+              animazione (es. <code>DoPosition</code>, <code>DoAlpha</code>), il
+              valore obiettivo, la durata, il tipo di easing, la modalità di
+              loop e altro, e di cliccare un pulsante di anteprima per vedere in
+              tempo reale l'effetto. <br /><br />
               Inoltre, ogni gruppo di comandi di animazione può essere
               configurato per essere riprodotto in modo simultaneo (cioè allo
               stesso tempo) o sequenziale. In questo modo è possibile creare
@@ -213,8 +224,8 @@ public class Test : MonoBehaviour
 
             <div class="video">
               <h3>
-                🎥 Video di esempio: aggiunta, configurazione e utilizzo di un
-                gruppo di comandi
+                🎥 Video di esempio: aggiunta, configurazione e utilizzo di
+                AnimSequenceConfig
               </h3>
               <video
                 controls
@@ -223,21 +234,21 @@ public class Test : MonoBehaviour
               ></video>
             </div>
 
-            <h2>🔹 Componente <code>AnimationCommand</code></h2>
+            <h2>🔹 Componente <code>AnimStepConfig</code></h2>
             <p>
               Se ti serve un singolo effetto animato, puoi usare direttamente il
-              componente <code>AnimationCommand</code>, che rappresenta un
-              singolo comando. Ogni comando include tipo di animazione
-              (spostamento, scala, opacità, ecc.), valore obiettivo, durata,
-              easing, modalità di loop e altri parametri. Nel pannello
+              componente <code>AnimStepConfig</code>, che rappresenta un singolo
+              comando. Ogni comando include tipo di animazione (spostamento,
+              scala, opacità, ecc.), valore obiettivo, durata, easing, modalità
+              di loop e altri parametri. Nel pannello
               <strong>Inspector</strong> è disegnato tramite
-              <code>AnimationCommandPropertyDrawer</code> per un editing
+              <code>AnimStepConfigPropertyDrawer</code> per un editing
               intuitivo, permettendoti di configurare l'animazione senza
               scrivere codice.
             </p>
 
             <div class="video">
-              <h3>🎥 Video di esempio: utilizzo di AnimationCommand</h3>
+              <h3>🎥 Video di esempio: utilizzo di AnimStepConfig</h3>
               <video
                 controls
                 preload="none"
@@ -284,8 +295,8 @@ public class Test : MonoBehaviour
                 <p>
                   ✅ <strong>Suggerimento:</strong> il componente
                   <code>FunctionPlus</code> può essere utilizzato all'interno di
-                  <code>AnimationCommandGroup</code> e non in
-                  <code>AnimationCommand</code>.
+                  <code>AnimSequenceConfig</code> e non in
+                  <code>AnimStepConfig</code>.
                 </p>
               </li>
             </ul>

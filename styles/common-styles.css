@@ -55,12 +55,12 @@ html {
 }
 
 /* ---------- 阻止用户选择或拖拽 ---------- */
-/* .prevent-select {
+.prevent-select {
   -webkit-user-select: none;
   -ms-user-select: none;
   -moz-user-select: none;
   user-select: none;
-} */
+}
 
 img,
 a {
@@ -364,4 +364,28 @@ h3,
 code:not(:is(pre code, table code)),
 p {
   word-break: break-word;
+}
+
+/* ---------- 通用：GitHub icon ---------- */
+#white_github,
+#black_github {
+  display: none;
+  min-width: 0 !important;
+  width: 32px !important;
+  height: 32px !important;
+  vertical-align: middle;
+}
+
+/* 默认亮色模式 */
+body #black_github {
+  display: inline-block;
+}
+
+/* dark 模式 */
+body.dark #black_github {
+  display: none;
+}
+
+body.dark #white_github {
+  display: inline-block;
 }
